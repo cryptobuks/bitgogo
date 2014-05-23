@@ -8,3 +8,9 @@ App.Router.map(function() {
 
 App.IndexRoute = Ember.Route.extend({
 });
+
+App.IndexController = Ember.Controller.extend({
+
+  balance: 10,
+
+});
