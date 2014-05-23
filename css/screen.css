@@ -19,3 +19,9 @@ header h1 img {
   width: 250px;
   height: 99px;
 }
+
+meter {
+  width: 300px;
+  height: 30px;
+  background: #fff;
+}
