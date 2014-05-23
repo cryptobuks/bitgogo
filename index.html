@@ -7,15 +7,20 @@
     <link rel="stylesheet" type="text/css" href="css/screen.css">
   </head>
   <body>
-    <header>
-      <h1>
-        <img src="img/aht-logo.png" alt="AfricaHackTrip">
-      </h1>
-      <h2>Fund the creation of "AfricaHackTrip – The Movie" with Bitcoin!</h2>
-    </header>
+    <script type="text/x-handlebars">
+      <header>
+        <h1>
+          <img src="img/aht-logo.png" alt="AfricaHackTrip">
+        </h1>
+        <h2>Fund the creation of "AfricaHackTrip – The Movie" with Bitcoin!</h2>
+      </header>
 
-    <main>
+      <main>
+        {{outlet}}
+      </main>
+    </script>
 
+    <script type="text/x-handlebars" id="index">
       <meter value="10" min="0" max="100"></meter>
       <div id="raised">
         <span class="amount">0</span> mBTC
@@ -32,9 +37,11 @@
           </a>
         </p>
       </section>
+    </script>
 
-    </main>
-
+    <script src="js/libs/jquery-1.10.2.js"></script>
+    <script src="js/libs/handlebars-1.1.2.js"></script>
+    <script src="js/libs/ember-1.5.1.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
