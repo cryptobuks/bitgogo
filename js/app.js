@@ -23,6 +23,7 @@ App.IndexRoute = Ember.Route.extend({
       Em.$.getJSON(App.get('apiAddressUrl'), function(data){
         console.log(data);
         controller.set('balanceSat', data.balanceSat);
+        controller.set('unconfirmedBalanceSat', data.unconfirmedBalanceSat);
       });
     });
   }
@@ -34,8 +35,10 @@ App.IndexController = Ember.Controller.extend({
   balanceSat: 0,
 
   balance: function(){
-    var sat = this.get('balanceSat');
-    return sat / 100000;
-  }.property('balanceSat')
+    var balance = this.get('balanceSat') / 100000;
+    var unconfirmedBalance = this.get('unconfirmedBalanceSat') / 100000;
+
+    return balance + unconfirmedBalance;
+  }.property('balanceSat', 'unconfirmedBalanceSat')
 
 });
