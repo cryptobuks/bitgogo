@@ -31,7 +31,11 @@ App.IndexRoute = Ember.Route.extend({
 
 App.IndexController = Ember.Controller.extend({
 
-  balance: 10,
   balanceSat: 0,
+
+  balance: function(){
+    var sat = this.get('balanceSat');
+    return sat / 100000;
+  }.property('balanceSat')
 
 });
