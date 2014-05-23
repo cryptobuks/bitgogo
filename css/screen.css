@@ -1,1 +1,21 @@
 /* screen.css */
+
+body {
+  font-family: sans-serif;
+  color: 323232;
+  background-color: #FBF8EF;
+  text-align: center;
+}
+
+header {
+  margin-bottom: 50px;
+}
+
+header h1 {
+  margin: 50px auto 30px;
+}
+
+header h1 img {
+  width: 250px;
+  height: 99px;
+}
