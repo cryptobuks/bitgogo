@@ -24,4 +24,18 @@ meter {
   width: 300px;
   height: 30px;
   background: #fff;
+  margin-bottom: 20px;
+}
+
+#raised {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#target {
+  color: #666;
+}
+
+#raised, #target {
+  margin-bottom: 10px;
 }
