@@ -22,6 +22,7 @@ App.IndexRoute = Ember.Route.extend({
     Em.run(function(){
       Em.$.getJSON(App.get('apiAddressUrl'), function(data){
         console.log(data);
+        controller.set('balanceSat', data.balanceSat);
       });
     });
   }
@@ -31,5 +32,6 @@ App.IndexRoute = Ember.Route.extend({
 App.IndexController = Ember.Controller.extend({
 
   balance: 10,
+  balanceSat: 0,
 
 });
