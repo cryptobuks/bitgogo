@@ -52,9 +52,21 @@ App.IndexController = Ember.Controller.extend({
   updateBalance: function(){
     Em.$.getJSON(App.get('apiAddressUrl'), function(data){
       console.log(data);
+      var balance = this.get('balance');
+      var newBalance = (data.balanceSat + data.unconfirmedBalanceSat) / 100000;
+
+      if (balance !== 0 && (balance !== newBalance)) {
+        console.log(balance, newBalance);
+        this.playSound();
+      }
+
       this.set('balanceSat', data.balanceSat);
       this.set('unconfirmedBalanceSat', data.unconfirmedBalanceSat);
     }.bind(this));
-  }
+  },
+
+  playSound: function(){
+    Em.$('audio')[0].play();
+  },
 
 });
