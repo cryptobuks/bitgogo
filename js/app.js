@@ -24,6 +24,8 @@ App.IndexRoute = Ember.Route.extend({
         console.log(data);
         controller.set('balanceSat', data.balanceSat);
         controller.set('unconfirmedBalanceSat', data.unconfirmedBalanceSat);
+
+        controller.startBalanceUpdates();
       });
     });
   }
@@ -39,6 +41,20 @@ App.IndexController = Ember.Controller.extend({
     var unconfirmedBalance = this.get('unconfirmedBalanceSat') / 100000;
 
     return balance + unconfirmedBalance;
-  }.property('balanceSat', 'unconfirmedBalanceSat')
+  }.property('balanceSat', 'unconfirmedBalanceSat'),
+
+  startBalanceUpdates: function(){
+    setInterval(function(){
+      this.updateBalance();
+    }.bind(this), 3000);
+  },
+
+  updateBalance: function(){
+    Em.$.getJSON(App.get('apiAddressUrl'), function(data){
+      console.log(data);
+      this.set('balanceSat', data.balanceSat);
+      this.set('unconfirmedBalanceSat', data.unconfirmedBalanceSat);
+    }.bind(this));
+  }
 
 });
