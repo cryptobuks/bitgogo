@@ -21,11 +21,14 @@ App.IndexRoute = Ember.Route.extend({
 
     Em.run(function(){
       Em.$.getJSON(App.get('apiAddressUrl'), function(data){
-        console.log(data);
         controller.set('balanceSat', data.balanceSat);
         controller.set('unconfirmedBalanceSat', data.unconfirmedBalanceSat);
 
         controller.startBalanceUpdates();
+      });
+
+      $.getJSON("https://cors.5apps.com/?uri=http://blockchain.info/stats?format=json", function(data){
+        controller.set('marketPriceUSD', data.market_price_usd);
       });
     });
   }
@@ -35,6 +38,9 @@ App.IndexRoute = Ember.Route.extend({
 App.IndexController = Ember.Controller.extend({
 
   balanceSat: 0,
+  unconfirmedBalanceSat: 0,
+  marketPriceUSD: 0,
+  targetMBTC: 300,
 
   balance: function(){
     var balance = this.get('balanceSat') / 100000;
@@ -46,6 +52,18 @@ App.IndexController = Ember.Controller.extend({
   balanceFormatted: function(){
     return parseFloat(this.get('balance')).toFixed(2);
   }.property('balance'),
+
+  balanceUSD: function(){
+    var fiatValue = this.get('balance') / 1000 * this.get('marketPriceUSD');
+
+    return parseFloat(fiatValue).toFixed(2);
+  }.property('balance', 'marketPriceUSD'),
+
+  targetUSD: function(){
+    var fiatTarget = this.get('targetMBTC') / 1000 * this.get('marketPriceUSD');
+
+    return parseFloat(fiatTarget).toFixed(2);
+  }.property('balance', 'marketPriceUSD'),
 
   startBalanceUpdates: function(){
     setInterval(function(){

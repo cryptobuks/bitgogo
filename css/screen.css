@@ -35,6 +35,12 @@ meter {
 
 #target {
   color: #666;
+  margin-bottom: 10px;
+}
+
+#fiat-value {
+  color: #999;
+  font-size: 12px;
   margin-bottom: 50px;
 }
 
