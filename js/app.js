@@ -73,7 +73,6 @@ App.IndexController = Ember.Controller.extend({
 
   updateBalance: function(){
     Em.$.getJSON(App.get('apiAddressUrl'), function(data){
-      console.log(data);
       var balance = this.get('balance');
       var newBalance = (data.balanceSat + data.unconfirmedBalanceSat) / 100000;
 
