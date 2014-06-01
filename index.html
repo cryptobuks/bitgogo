@@ -23,7 +23,7 @@
     <script type="text/x-handlebars" id="index">
       <meter {{bind-attr value=balance}} min="0" max="100"></meter>
       <div id="raised">
-        <span class="amount">{{balance}}</span> mBTC
+        <span class="amount">{{balanceFormatted}}</span> mBTC
       </div>
       <div id="target">
         raised of 300 mBTC goal

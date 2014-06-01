@@ -43,6 +43,10 @@ App.IndexController = Ember.Controller.extend({
     return balance + unconfirmedBalance;
   }.property('balanceSat', 'unconfirmedBalanceSat'),
 
+  balanceFormatted: function(){
+    return parseFloat(this.get('balance')).toFixed(2);
+  }.property('balance'),
+
   startBalanceUpdates: function(){
     setInterval(function(){
       this.updateBalance();
