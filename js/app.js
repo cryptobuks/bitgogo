@@ -4,7 +4,7 @@ App = Ember.Application.create();
 
 App.reopen({
   walletAddress: '1GXqRnh753Dtq99JAsfwRwg7XKDPENAZGV',
-  apiBaseUrl: 'http://insight.kip.pe/api/',
+  apiBaseUrl: 'https://insight.bitpay.com/api/',
   apiAddressUrl: function(){
     return this.get('apiBaseUrl') + 'addr/' + this.get('walletAddress');
   }.property('walletAddress', 'apiBaseUrl')
