@@ -27,7 +27,7 @@ App.IndexRoute = Ember.Route.extend({
         controller.startBalanceUpdates();
       });
 
-      $.getJSON("https://cors.5apps.com/?uri=http://blockchain.info/stats?format=json", function(data){
+      $.getJSON("https://cors.5apps.com/?uri=https://blockchain.info/stats?format=json", function(data){
         controller.set('marketPriceUSD', data.market_price_usd);
       });
     });
