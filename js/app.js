@@ -40,7 +40,7 @@ App.IndexController = Ember.Controller.extend({
   balanceSat: 0,
   unconfirmedBalanceSat: 0,
   marketPriceUSD: 0,
-  targetMBTC: 300,
+  targetMBTC: 1,
 
   balance: function(){
     var balance = this.get('balanceSat') / 100000;
